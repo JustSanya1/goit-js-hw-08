@@ -66,6 +66,7 @@ const images = [
 
 const ulEl = document.querySelector(".gallery");
 let galleryStringArray = [];
+
 images.forEach(({ preview, original, description }) => {
     return galleryStringArray.push(`<li class="gallery-item">
   <a class="gallery-link" href="${original}">
@@ -77,8 +78,8 @@ images.forEach(({ preview, original, description }) => {
     />
   </a>
 </li>`);
-    
 });
+
 let galleryString = galleryStringArray.join('');
 ulEl.insertAdjacentHTML("afterbegin", galleryString);
 
