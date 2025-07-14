@@ -64,6 +64,7 @@ const images = [
       },
     ];
 
+    
 const ulEl = document.querySelector(".gallery");
 let galleryString = images.map(({ preview, original, description }) => {
   return `<li class="gallery-item">
