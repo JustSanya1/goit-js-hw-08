@@ -65,10 +65,8 @@ const images = [
     ];
 
 const ulEl = document.querySelector(".gallery");
-let galleryStringArray = [];
-
-images.forEach(({ preview, original, description }) => {
-    return galleryStringArray.push(`<li class="gallery-item">
+let galleryString = images.map(({ preview, original, description }) => {
+  return `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
@@ -77,17 +75,11 @@ images.forEach(({ preview, original, description }) => {
       alt="${description}"
     />
   </a>
-</li>`);
-});
-
-let galleryString = galleryStringArray.join('');
+</li>`}).join('');
 ulEl.insertAdjacentHTML("afterbegin", galleryString);
 
-let linkEL = document.querySelectorAll('.gallery-link');
-for (let link of linkEL) { link.addEventListener('click', (e) => { e.preventDefault() }) };
-
-
 const onGalleryClick = (e) => {
+  e.preventDefault();
     if (e.target.classList.contains('gallery-image')) {
         const originImage = basicLightbox.create(`<img src="${e.target.dataset.source}" style="width: 1112px; height: 640px;">`).show();
  }
